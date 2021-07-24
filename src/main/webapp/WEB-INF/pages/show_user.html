@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div align="center">
+    <h3>Show User</h3>
+    <form th:action="@{/users/{id} (id=*{id})}" th:object="${show_user}" method="post">
+        <table border="1">
+            <tr>
+                <th>name</th>
+                <th>lastname</th>
+                <th>age</th>
+            </tr>
+
+            <tr>
+                <td th:text="${show_user.name}">name</td>
+                <td th:text="${show_user.lastname}">surname</td>
+                <td th:text="${show_user.age}">age</td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <br><br>
+</div>
+</body>
+</html>l>
