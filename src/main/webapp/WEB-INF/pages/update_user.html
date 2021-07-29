@@ -11,7 +11,7 @@
     <br/>
 
 
-    <form th:method="PATCH" th:action="@{/users/edit/{id} (id=*{id})}" th:object="${upd_user}" >
+    <form th:method="PATCH" th:action="@{/users/{id} (id=*{id})}" th:object="${upd_user}" >
         <table>
             <tr>
                 <td>First Name</td>
