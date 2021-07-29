@@ -1,4 +1,5 @@
 package web.controller;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,44 +15,46 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public String listUsers (Model model) {
+    public String listUsers(Model model) {
         model.addAttribute("all_us", userService.getAllUsers());
         return "all_users";
     }
 
     @GetMapping("/new")
-    public String newUser (Model model) {
+    public String newUser(Model model) {
         model.addAttribute("new_user", new User());
         return "new_user";
     }
 
     @PostMapping("/add")
-    public String saveUser (@ModelAttribute("/add_user") User user) {
+    public String saveUser(@ModelAttribute("new_user") User user) {
         userService.addUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}")
-    public String showUser (@PathVariable("id") int id, Model model) {
+    public String showUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("show_user", userService.getUserById(id));
         return "show_user";
     }
 
     @GetMapping("/edit/{id}")
-    public String editUser(@PathVariable("id") int id, Model model) {
+    public String editUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("upd_user", userService.getUserById(id));
         return "update_user";
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("update_user") User user, @PathVariable("id") int id) {
+    public String updateUser(@ModelAttribute("upd_user") User user, @PathVariable("id") long id) {
         userService.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+    public String deleteUser(@PathVariable("id") long id) {
         userService.removeUser(id);
         return "redirect:/users";
     }
+
+
 }

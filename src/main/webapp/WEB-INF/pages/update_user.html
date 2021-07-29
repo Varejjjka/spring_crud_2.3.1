@@ -11,7 +11,7 @@
     <br/>
 
 
-    <form method="POST" th:action="@{/users/{id} (id=*{id})}" th:object="${upd_user}" >
+    <form th:method="PATCH" th:action="@{/users/edit/{id} (id=*{id})}" th:object="${upd_user}" >
         <table>
             <tr>
                 <td>First Name</td>
@@ -34,7 +34,7 @@
             </tr>
         </table>
 
-        <td colspan="3"> <input type="submit" value="Ok"> </td>
+        <input type="submit" value="Ok" />
     </form>
     </body>
 </div>
